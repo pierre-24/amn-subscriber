@@ -5,7 +5,7 @@ import flask
 import flask_login
 from flask_login import login_required
 
-from amn_subscriber import settings, forms, models, db, User
+from amn_subscriber import forms, models, db, User
 
 
 class RenderTemplateView(View):
@@ -15,7 +15,7 @@ class RenderTemplateView(View):
     def get_context_data(self, *args, **kwargs):
         # webpage info
         ctx = {}
-        ctx.update(**settings.WEBPAGE_INFO)
+        ctx.update(flask.current_app.config['WEBPAGE_INFO'])
 
         return ctx
 
@@ -156,7 +156,8 @@ class LoginView(FormView):
 
     def form_valid(self, form):
 
-        if form.login.data != settings.APP_CONFIG['USERNAME'] or form.password.data != settings.APP_CONFIG['PASSWORD']:
+        if form.login.data != flask.current_app.config['USERNAME'] \
+                or form.password.data != flask.current_app.config['PASSWORD']:
             flask.flash('Utilisateur ou mot de passe incorrect', 'error')
             return self.form_invalid(form)
 

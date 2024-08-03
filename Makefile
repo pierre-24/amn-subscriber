@@ -4,6 +4,9 @@ install:
 install-dev:
 	pip install -e .[dev]
 
+init:
+	flask --app amn_subscriber init
+
 lint:
 	flake8 amn_subscriber tests --max-line-length=120 --ignore=N802
 

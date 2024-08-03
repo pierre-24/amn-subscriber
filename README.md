@@ -16,18 +16,9 @@ export FLASK_APP=amn_subscriber
 flask init
 ```
 
-N'oubliez pas de créer un `settings_prod.py`
+N'oubliez pas de créer un `settings.py`
 
 ```python
-from amn_subscriber import settings
-
-# config interne
-settings.APP_CONFIG.update({
-    
-    # Clé secrète pour Flask
-    'SECRET_KEY': '****',
-    
-    # Mot de passe d'administration
-    'PASSWORD': '****',
-})
+SECRET_KEY = '****'
+PASSWORD ='****'
 ```

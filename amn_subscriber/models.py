@@ -13,7 +13,7 @@ class Request(BaseModel):
     surname = db.Column(db.VARCHAR(length=150), nullable=False)
     name = db.Column(db.VARCHAR(length=150), nullable=False)
     email = db.Column(db.VARCHAR(length=150), nullable=False)
-    note = db.Column(db.Text, nullable=False)
+    note = db.Column(db.Text, nullable=True)
 
     @classmethod
     def create(cls, surname: str, name: str, email: str, note: str = ''):
