@@ -24,6 +24,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install pip-tools
+        make install-dev
+    - name: init stuffs
+      run: |
         make init
     - name: Lint
       run: |
