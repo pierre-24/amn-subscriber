@@ -1,0 +1,48 @@
+{% from 'bootstrap5/utils.html' import render_messages %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block page_title %}{% endblock %} - {{ site_name }}</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
+    <meta name="description" content="{{ site_name }} : {{ site_description }}">
+
+    {{ bootstrap.load_css() }}
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    {% block other_head_stuffs %}{% endblock %}
+</head>
+
+<body>
+
+    <div class="container" id="messages-zone">
+        {{ render_messages() }}
+    </div>
+
+    <div id="page-content">
+        {% block page_content %}
+        <div id="content" class="container mt-4 pb-4">
+        {% block content %}{% endblock %}
+        </div>
+        {% endblock %}
+    </div>
+
+    <footer class="container">
+        <div id="bottom-txt" class="mt-2">
+            &copy; {{ site_name }}
+            &bull; Site web par {{ author_name }}  (version: {{ site_version }})
+
+            {% if not current_user.is_authenticated %}
+                &bull; <a href="{{ url_for('admin.login') }}">Sésame</a>
+            {% else %}
+                &bull; <a href="{{ url_for('admin.index') }}">Administration</a> (<a href="{{ url_for('admin.logout') }}">Se déconnecter</a>)
+            {% endif %}
+        </div>
+    </footer>
+
+    {% block scripts %}
+        {{ bootstrap.load_js() }}
+    {% endblock %}
+</body>
+</html>

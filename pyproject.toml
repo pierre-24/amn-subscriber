@@ -1,0 +1,40 @@
+[project]
+name = "amn-subscriber"
+version = '0.0.1'
+authors = [
+    {name = "Pierre Beaujean", email = "pierreb24@gmail.com"},
+]
+description = "Un truc quick and dirty pour stocker les inscriptions à l'infolettre."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "Flask",
+    "Flask-SQLAlchemy",
+    "sqlalchemy-utils",
+    "email_validator",
+    "bootstrap-flask",
+    "Flask-WTF",
+    "Flask-Login"
+]
+
+[project.optional-dependencies]
+dev = [
+    "flake8",
+    "flake8-quotes",
+    "autopep8",
+]
+
+[tool.setuptools]
+packages = ['amn_subscriber']
+
