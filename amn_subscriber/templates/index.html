@@ -2,22 +2,24 @@
 
 {% from 'bootstrap5/form.html' import render_form_row %}
 
-{% block page_title %}Formulaire photo{% endblock %}
+{% block page_title %}Inscription à l'infolettre{% endblock %}
 
 {% block content %}
-    <h1>Formulaire photo</h1>
 
-    <form action="{{ url_for('main.index') }}" method="post" id="newsletter-form">
+    <p>Vous voulez en apprendre plus sur notre association ? Vous voulez être au courant de nos futures activités ? Vous voulez nous soutenir ? N'hésitez pas et inscrivez vous à notre infolettre, <b>qui est publiée 4 fois par an</b>. </p>
+
+    <form action="{{ url_for('main.index') }}" method="post" id="newsletter-form" class="container p-4">
         {{ form.hidden_tag() }}
         <div class="form-row">
-            {{ render_form_row([form.surname, form.name])  }}
+            {{ render_form_row([form.surname])  }}
+            {{ render_form_row([form.name])  }}
             {{ render_form_row([form.email])  }}
-            {{ render_form_row([form.note])  }}
 
             {{ render_form_row([form.gdpr])  }}
-            <p class="text-secondary">
-                Notez que vos données seront traitées <b>que</b> par l'association Anne-Marie Nihoul (en la personne de Pierre Beaujean) et <b>ne seront pas conservées</b> au delà de l'envoi de la photo, <b>ni partagées</b>.
+            <p class="text-secondary small">
+                Notez que vos données seront traitées <b>que</b> par l'association Anne-Marie Nihoul (en la personne de Pierre Beaujean) en vue de recevoir l'infolettre et <b>ne seront pas partagées</b>.
             </p>
+            {{ render_form_row([form.note])  }}
 
             <div class="col-md-2">{{ form.submit_button(
                 class_='btn btn-primary mb-2'

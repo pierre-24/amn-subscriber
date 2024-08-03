@@ -23,10 +23,10 @@ class MainForm(FlaskForm):
             f.validators.email(message="Ceci n'est pas une adresse email valide")]
     )
 
-    note = f.StringField('Note')
+    note = f.TextAreaField('Commentaire', render_kw={'placeholder': "Si vous avez un commentaire, c'est ici !"})
 
     gdpr = f.BooleanField(
-        "J'accepte de recevoir, par mail, ma photo.",
+        "J'accepte de recevoir, à cette addresse email, les futures infolettres de l'association.",
         validators=[f.validators.input_required('ce choix est nécessaire')]
     )
 
